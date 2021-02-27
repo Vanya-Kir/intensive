@@ -1,0 +1,59 @@
+﻿<!doctype html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script type="text/javascript">
+
+    // Аналог функции getElementById через поиск в DOM
+    function findElem(parent, id) {
+      //console.log('Children count = ' + parent.children.length); //возникает ошибка
+
+      let elem = null;
+
+      if (parent.id === id) {
+        return (parent);
+      }
+      if (parent.firstChild != null) {
+        elem = findElem(parent.firstChild, id);
+        return elem;
+      }
+      else {
+        if (parent.nextSibling != null) {
+          elem = findElem(parent.nextSibling, id)
+          return elem;
+        }
+        else {
+          if (parent.parentNode.nextSibling != null) {
+            elem = findElem(parent.parentNode.nextSibling, id);
+            return elem;
+          }
+        }
+      }
+      return elem;
+    }
+
+    function findElement() {
+      let id = findElem(document.body, "divIdField").value; // задаем id
+      let elem = findElem(document.body, id); // Поиск начинаем с document.body
+
+      if (elem) {
+        alert(elem.innerText);
+        elem.innerText++; // +1 к значению элемента
+      } else {
+        alert('Элемент ' + id + ' не найден');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <p>Введите id искомого элемента:</p>
+  <input id="divIdField" type="text" name="input" value="counter">
+  <button type="button" onclick='findElement();return false;'>Увеличить значение</button>
+  <div>
+    <div id="counter">1</div>
+  </div>
+</body>
+
+</html>
