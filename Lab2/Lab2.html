@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 2</title>
+</head>
+
+<body>
+    <h3>Выполнил Кириллов Иван Сергеевич</h3>
+    <p><a href="mailto:van-kirillov@yandex.ru">van-kirillov@yandex.ru</a></p>
+
+    <script>
+        //класс Mailbox
+        class Mailbox {
+            constructor() {
+                this.mail = null;
+                this.arrayB = [];       //массив для функций beforeSend
+                this.arrayA = [];       //массив для функций afterSend
+                this.flagBefor = true;  //флаг проверки для beforeSend
+            }
+            beforeSend(funB) {
+                this.arrayB.push(funB);
+            }
+
+            afterSend(funA) {
+                this.arrayA.push(funA);
+            }
+
+            sendMail(mail) {
+                this.mail = mail;
+
+                for (let i in this.arrayB) {
+                    this.flagBefor = this.arrayB[i](this.mail) && this.flagBefor;
+                }
+                if (this.flagBefor) {
+                    for (let i in this.arrayA) {
+                        this.arrayA[i](this.mail);
+                    }
+                }
+            }
+        }
+
+
+        // Проверка
+        const mailbox = new Mailbox()
+        mailbox.beforeSend(function (mail, send) {
+            return mail !== 'spam';
+        })
+        mailbox.afterSend(function (mail) {
+            console.log('Новое сообщение: ' + mail)
+        })
+        mailbox.sendMail('asdf') // в консоли ‘Новое сообщение: asdf’
+        mailbox.sendMail('spam') // ничего не выводит в консоль
+    </script>
+</body>
+</html>
