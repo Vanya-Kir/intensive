@@ -27,24 +27,13 @@ const columns = [
 class User extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { user: [], error: '', id: null };
-  }
-
-  checkId() {
-    if (this.props.userId === null) {
-      return this.state.id;
-    }
-    this.setState({
-      id: this.props.userId,
-    });
-    return this.props.userId;
+    this.state = { user: [], error: '' };
   }
 
   componentDidMount = async () => {
-    const index = this.checkId();
     let user = [];
     try {
-      const result = await fetch(url + index);
+      const result = await fetch(url + this.props.userId);
       user = await result.json();
     } catch (err) {
       this.setState({
