@@ -23,7 +23,6 @@ function simplePost() {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(postData),
-        //data: postData,
         success: function (result) {
             alert(result);
         }
