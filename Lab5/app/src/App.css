@@ -1,0 +1,120 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  min-height: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.drawer {
+  background-color: rebeccapurple;
+  flex: 1;
+
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.dashboard {
+  padding-top: 50px;
+  flex: 4;
+  background-color: #61dafb;
+
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm {
+  margin: auto;
+  min-height: 100vh;
+  margin-top: 50vh;
+}
+
+.drawer-links {
+  font-size: 20px;
+  margin: 20px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.button {
+  padding: 5px;
+  cursor: pointer;
+  overflow: hidden;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+
+  background-color: #2ecc71;
+  color: #ecf0f1;
+
+  transition: background-color 0.3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #27ae60;
+}
+
+.headerComponent {
+  position: fixed;
+  top: 0;
+  left: auto;
+  width: 100%;
+  background-color: lightseagreen;
+  height: 50px;
+}
+
+.table-wrapper {
+  max-height: 80vh;
+  overflow: auto;
+}
