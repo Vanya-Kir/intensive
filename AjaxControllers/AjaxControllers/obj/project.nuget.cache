@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZntSzWKh4po8KluPATX2yI2pA4asxV1f8oRtFa+fYD+avAMe7jqCro8PK46XmoBoO8MF3VeYIzR0htpZggFZsg==",
+  "success": true,
+  "projectFilePath": "D:\\GIT\\intensive\\AjaxControllers\\AjaxControllers\\AjaxControllers.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\van-k\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
