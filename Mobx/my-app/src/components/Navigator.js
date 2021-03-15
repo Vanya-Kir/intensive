@@ -6,12 +6,17 @@ import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import Students from './Tables/Students';
 import User from './Tables/User';
 import BookIcon from '@material-ui/icons/Book';
+import { inject, observer } from 'mobx-react';
+import PropTypes from 'prop-types';
 
+@inject('MainStore')
+@observer
 class Navigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = { userId: null };
   }
+
   // выбранный студент из таблицы
   choiceUser = (param) => {
     this.props.sendValue(<User userId={param} />);
@@ -20,9 +25,11 @@ class Navigator extends React.Component {
 
   buttonArray = [
     {
-      text: 'ФИО',
+      text: this.props.MainStore.userFullName,
       icon: <FaceIcon />,
-      message: 'ФИО: Кириллов Иван Сергеевич',
+      message: this.props.MainStore.userFullName
+        ? this.props.MainStore.userFullName
+        : 'ФИО: Кириллов Иван Сергеевич',
     },
     {
       text: 'Группа',
@@ -42,14 +49,17 @@ class Navigator extends React.Component {
   ];
 
   render() {
+    const { navItemIndex, onNavChange } = this.props;
     return (
       <div className='navigator'>
-        {this.buttonArray.map((button, i) => (
+        {this.buttonArray.map((button, index) => (
           <div>
             <button
+              key={`link-${index}`}
               className='nav__button'
-              onClick={() => {
-                this.props.sendValue(button.message);
+              onClick={onNavChange(index, button.message)}
+              style={{
+                backgroundColor: index === navItemIndex ? '#c09cb8' : '#f6f6e7',
               }}
             >
               {button.icon}
@@ -60,8 +70,9 @@ class Navigator extends React.Component {
         {/* кнопка: курсовая*/}
         <button
           className='nav__button'
-          onClick={() => {
-            this.props.sendValue(<User userId={this.state.userId} />);
+          onClick={onNavChange(4, <User userId={this.state.userId} />)}
+          style={{
+            backgroundColor: 4 === navItemIndex ? '#c09cb8' : '#f6f6e7',
           }}
         >
           <BookIcon />
@@ -72,3 +83,9 @@ class Navigator extends React.Component {
   }
 }
 export default Navigator;
+
+Navigator.propTypes = {
+  navItemIndex: PropTypes.number.isRequired,
+  onNavChange: PropTypes.func.isRequired,
+  sendValue: PropTypes.func.isRequired,
+};

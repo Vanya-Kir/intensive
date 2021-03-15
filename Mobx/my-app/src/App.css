@@ -1,12 +1,16 @@
 .app {
   text-align: center;
-  font-size: 30px;
+  font-size: 20px;
+  /* display: flex;
+  flex-direction: row;
+  min-height: 100%; */
 }
 
 .mainScreen {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  width: 100%;
 }
 .navigator {
   flex: 1;
@@ -16,21 +20,28 @@
   justify-content: center;
 }
 .dashboard {
+  padding-top: 50px;
   flex: 5;
   background-color: #c2d1e5;
-  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 .bnt__input {
   position: absolute;
-  top: 25px;
-  right: 150px;
+  top: 70px;
+  right: 70px;
+  height: 50px;
+  width: 90px;
+  z-index: 1000;
 }
 .input {
   position: fixed;
   top: 50%;
   left: 50%;
   width: 200px;
-  height: 30px;
+  height: 50px;
   margin: -50px 0 0 -100px;
 }
 body {
@@ -46,5 +57,27 @@ table {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5px;
+  border-radius: 7px;
   width: 200px;
+}
+.headerComponent {
+  position: fixed;
+  top: 0;
+  left: auto;
+  width: 100%;
+  background-color: lightseagreen;
+  height: 50px;
+  z-index: 100;
+}
+.headMessage {
+  padding-top: 10px;
+}
+.tab__false {
+  background-color: whitesmoke;
+}
+.tab__true {
+  background-color: rgb(255, 208, 215);
+}
+.headerMessage {
+  font-size: 18px;
 }

@@ -1,19 +1,37 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { inject } from 'mobx-react';
 
+@inject('MainStore')
 class LoginForm extends React.Component {
-  handleClick = () => {
-    const { handleLoginClick } = this.props;
-    handleLoginClick(true);
+  constructor(props) {
+    super(props);
+    this.input = React.createRef();
+  }
+
+  handleClick  = () => {
+    
+    this.props.handleLoginClick(true);
+    const newUserName = this.input.current.value;
+    this.props.MainStore.changeUserName(newUserName);
+    
   };
   render() {
     return (
       <div className='logForm'>
-        <button onClick={this.handleClick} className='bnt__input'>
+
+        <form>
+        <button onClick={this.handleClick } className='bnt__input'>
           Войти
         </button>
-        <form>
           <label>
-            <input className='input' type='text' name='name' />
+            <input
+              className='input'
+              type='text'
+              name='name'
+              placeholder='Введите ваше имя'
+              ref={this.input}
+            />
           </label>
         </form>
       </div>
@@ -21,3 +39,6 @@ class LoginForm extends React.Component {
   }
 }
 export default LoginForm;
+LoginForm.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
