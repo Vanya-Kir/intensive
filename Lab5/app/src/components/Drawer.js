@@ -7,33 +7,32 @@ import Students from './Tables/Students';
 import CourseWork from './Tables/CourseWork';
 import { inject } from 'mobx-react';
 
-
 export const getLinks = (props) => [
   {
-    text: props ? props.MainStore.userFullName: 'Имя пользователя',
-    content: 'Зайцев Станислав Дмитриевич',
+    text: props ? props.MainStore.userFullName : 'Имя пользователя',
+    content: 'Кириллов Иван',
     icon: <PersonIcon />,
   },
   {
     text: 'Группа',
-    content: 'Кейсистемс',
+    content: 'ИВТ-13-18',
     icon: <GroupIcon />,
   },
   {
     text: 'Возраст',
-    content: '28',
+    content: '21',
     icon: <DateRangeIcon />,
   },
   {
     text: 'Студенты',
     icon: <GroupIcon />,
-    content: <Students setUserId={props && props.setUserId}/>,
+    content: <Students setUserId={props && props.setUserId} />,
   },
   {
     text: 'Курсовые',
     icon: <GroupIcon />,
-    content: <CourseWork />,
-  }
+    content: <CourseWork userId={props.userId}/>,
+  },
 ];
 
 @inject('MainStore')
@@ -47,7 +46,7 @@ class Drawer extends React.Component {
             key={`link-${ind}`}
             className='drawer-links'
             onClick={onNavChange(ind, link.content)}
-            style={{ backgroundColor: ind === navItemIndex? 'red' : 'green' }}
+            style={{ backgroundColor: ind === navItemIndex ? 'red' : 'green' }}
           >
             <button className='button'>
               {link.icon}
@@ -65,5 +64,5 @@ export default Drawer;
 Drawer.propTypes = {
   navItemIndex: PropTypes.number.isRequired,
   onNavChange: PropTypes.func.isRequired,
-  setUserId: PropTypes.func.isRequired
+  setUserId: PropTypes.func.isRequired,
 };

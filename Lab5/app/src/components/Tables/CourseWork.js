@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'antd';
 
-const url = 'https://jsonplaceholder.typicode.com/posts';
+const url = 'https://jsonplaceholder.typicode.com/posts?userId=';
 
 const columns = [
   {
@@ -32,11 +32,11 @@ class CourseWork extends React.Component {
   };
 
   componentDidMount = async () => {
-    let docs = [];
+    // let docs = [];
     try {
       let result;
-      if (this.props.id != undefined) {
-        result = await fetch(url + '?userId=' + this.props.id);
+      if (this.props.id !== undefined) {
+        result = await fetch(url + this.props.id);
       } else {
         result = await fetch(url);
       }

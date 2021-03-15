@@ -45,6 +45,7 @@ class App extends React.Component {
                 setUserId={this.setUserId}
                 onNavChange={this.onNavChange}
                 navItemIndex={navItemIndex}
+                userId={this.state.userId}
               />
               <Dashboard
                 handleClick={this.onLoginFormClick}
