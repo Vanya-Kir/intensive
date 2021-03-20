@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "name": "Ivan",
+    "city": "Cheboksary",
+    "phone": "111"
+  },
+  {
+    "id": 2,
+    "name": "Leanne Graham",
+    "city": "Gwenborough",
+    "phone": "222"
+  },
+
+  {
+    "id": 3,
+    "name": "Ervin",
+    "city": "Wisokyburgh",
+    "phone": "333"
+  },
+  {
+    "id": 4,
+    "name": "LeYsdanne Rdfgdfg",
+    "city": "Udfgagodf",
+    "phone": "444"
+  },
+  {
+    "id": 5,
+    "name": "Leanne Ssdf",
+    "city": "Gwersdfae",
+    "phone": "555"
+  }
+]

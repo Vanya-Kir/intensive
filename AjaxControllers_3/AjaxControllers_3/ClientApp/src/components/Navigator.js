@@ -6,30 +6,23 @@ import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import Students from './Tables/Students';
 import User from './Tables/User';
 import BookIcon from '@material-ui/icons/Book';
-import { inject, observer } from 'mobx-react';
-import PropTypes from 'prop-types';
 
-@inject('MainStore')
-@observer
 class Navigator extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { userId: null };
+    this.state = { userId: -1 };
   }
-
   // выбранный студент из таблицы
   choiceUser = (param) => {
-    this.props.sendValue(<User userId={param} />, 4);
+    this.props.sendValue(<User userId={param} />);
     this.setState({ userId: param });
   };
 
   buttonArray = [
     {
-      text: this.props.MainStore.userFullName,
+      text: 'ФИО',
       icon: <FaceIcon />,
-      message: this.props.MainStore.userFullName
-        ? this.props.MainStore.userFullName
-        : 'ФИО: Кириллов Иван Сергеевич',
+      message: 'ФИО: Кириллов Иван Сергеевич',
     },
     {
       text: 'Группа',
@@ -46,25 +39,17 @@ class Navigator extends React.Component {
       icon: <LocalLibraryIcon />,
       message: <Students choiceUser={this.choiceUser} />,
     },
-    {
-      text: 'Курсовые',
-      icon: <BookIcon />,
-      message: <User />,
-    },
   ];
 
   render() {
-    const { navItemIndex, onNavChange } = this.props;
     return (
       <div className='navigator'>
-        {this.buttonArray.map((button, index) => (
+        {this.buttonArray.map((button, i) => (
           <div>
             <button
-              key={`link-${index}`}
               className='nav__button'
-              onClick={onNavChange(index, button.message)} //button.message
-              style={{
-                backgroundColor: index === navItemIndex ? '#c09cb8' : '#f6f6e7',
+              onClick={() => {
+                this.props.sendValue(button.message);
               }}
             >
               {button.icon}
@@ -73,24 +58,17 @@ class Navigator extends React.Component {
           </div>
         ))}
         {/* кнопка: курсовая*/}
-        {/* <button
+        <button
           className='nav__button'
-          onClick={onNavChange(4, <User userId={this.state.userId} />)}
-          style={{
-            backgroundColor: 4 === navItemIndex ? '#c09cb8' : '#f6f6e7',
+          onClick={() => {
+            this.props.sendValue(<User />);
           }}
         >
           <BookIcon />
           Курсовые
-        </button> */}
+        </button>
       </div>
     );
   }
 }
 export default Navigator;
-
-Navigator.propTypes = {
-  navItemIndex: PropTypes.number.isRequired,
-  onNavChange: PropTypes.func.isRequired,
-  sendValue: PropTypes.func.isRequired,
-};

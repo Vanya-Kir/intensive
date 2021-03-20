@@ -1,0 +1,54 @@
+.app {
+  text-align: center;
+  font-size: 30px;
+}
+
+.mainScreen {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+.navigator {
+  flex: 1;
+  background-color: #fe793d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dashboard {
+  flex: 5;
+  background-color: #c2d1e5;
+  position: relative;
+}
+.bnt__input {
+  position: absolute;
+  top: 25px;
+  right: 150px;
+}
+.input {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 30px;
+  margin: -50px 0 0 -100px;
+}
+body {
+  background-color: #95bddc !important;
+}
+table {
+  margin-top: 10px;
+}
+.dashboard__p {
+  margin-top: 20px;
+}
+.nav__button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  width: 200px;
+}
+.user input {
+    width: 200px;
+    height: 30px;
+}
